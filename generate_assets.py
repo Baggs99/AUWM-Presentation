@@ -207,8 +207,6 @@ SLIDES = [
         "eyebrow": "Bibliography",
         "title": "Sources",
         "entries": [
-            "Ajose, Toyin. \u201cMultitracking the Spirit: Musicality, Prayer Chants and "
-            "Pentecostal Spirituality in Nigeria.\u201d Harvard Divinity School, 2025.",
             "Ajose, Toyin Samuel. \u201cLiturgical traditions and transitions: Congregational "
             "hymn singing in Nigerian Pentecostal churches.\u201d Journal of the Association "
             "of Nigerian Musicologists, 2025.",
@@ -216,19 +214,15 @@ SLIDES = [
             "prosperity gospel among Yoruba Pentecostals in Southwest Nigeria.\u201d",
             "Ayodeji, Oluwafemi Emmanuel. Ecstasy, Holiness and Spiritual Warfare: "
             "Yor\u00f9b\u00e1 Pentecostal Music Experience. Durham University, 2019.",
-            "Course materials and lecture framing, African Urban Worship Music, Yale "
-            "Divinity School.",
-            "King, Roberta Rose, Jean Ngoya Kidula, James R. Krabill, and Thomas Oduro. "
-            "Music in the Life of the African Church. Waco, TX: Baylor University Press, 2008.",
             "Rotimi, Oti Alaba. \u201cThe Role of Music in African Pentecostal Churches in "
             "Southwestern Nigeria.\u201d",
             "Sinach. \u201cI Know Who I Am.\u201d Official music video, 2014. YouTube.",
         ],
         "notes": (
-            "Leave this slide up during questions. The core scholarly anchors are King et al. "
-            "for the course framing and the Ajose and Ayodeji studies for Nigerian Pentecostal "
-            "music specifically. Rotimi and Ajose\u2019s prosperity gospel essay both connect "
-            "directly to the practical-theology argument."
+            "Leave this slide up during questions. The core scholarly anchors are the Ajose "
+            "and Ayodeji studies on Nigerian Pentecostal music, with Rotimi and Ajose\u2019s "
+            "prosperity gospel essay both connecting directly to the practical-theology "
+            "argument."
         ),
     },
 ]
@@ -358,8 +352,6 @@ SCRIPT = [
 ]
 
 BIBLIOGRAPHY = [
-    "Ajose, Toyin. \u201cMultitracking the Spirit: Musicality, Prayer Chants and Pentecostal "
-    "Spirituality in Nigeria.\u201d Harvard Divinity School, 2025.",
     "Ajose, Toyin Samuel. \u201cLiturgical traditions and transitions: Congregational hymn "
     "singing in Nigerian Pentecostal churches.\u201d Journal of the Association of Nigerian "
     "Musicologists, 2025.",
@@ -367,9 +359,6 @@ BIBLIOGRAPHY = [
     "gospel among Yoruba Pentecostals in Southwest Nigeria.\u201d",
     "Ayodeji, Oluwafemi Emmanuel. Ecstasy, Holiness and Spiritual Warfare: Yor\u00f9b\u00e1 "
     "Pentecostal Music Experience. Durham University, 2019.",
-    "Course materials and lecture framing. African Urban Worship Music. Yale Divinity School.",
-    "King, Roberta Rose, Jean Ngoya Kidula, James R. Krabill, and Thomas Oduro. Music in the "
-    "Life of the African Church. Waco, TX: Baylor University Press, 2008.",
     "Rotimi, Oti Alaba. \u201cThe Role of Music in African Pentecostal Churches in Southwestern "
     "Nigeria.\u201d",
     "Sinach. \u201cI Know Who I Am.\u201d Official music video, 2014. "

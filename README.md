@@ -100,13 +100,10 @@ Slide 6 is the hinge of the argument and is visually distinct from the rest of t
 
 ## Sources used
 
-1. Ajose, Toyin. "Multitracking the Spirit: Musicality, Prayer Chants and Pentecostal Spirituality in Nigeria." Harvard Divinity School, 2025.
-2. Ajose, Toyin Samuel. "Liturgical traditions and transitions: Congregational hymn singing in Nigerian Pentecostal churches." *Journal of the Association of Nigerian Musicologists*, 2025.
-3. Ajose, Toyin Samuel. "'Me I no go suffer': Christian songs and prosperity gospel among Yoruba Pentecostals in Southwest Nigeria."
-4. Ayodeji, Oluwafemi Emmanuel. *Ecstasy, Holiness and Spiritual Warfare: Yorùbá Pentecostal Music Experience*. Durham University, 2019.
-5. Course materials and lecture framing. *African Urban Worship Music*. Yale Divinity School.
-6. King, Roberta Rose, Jean Ngoya Kidula, James R. Krabill, and Thomas Oduro. *Music in the Life of the African Church*. Waco, TX: Baylor University Press, 2008.
-7. Rotimi, Oti Alaba. "The Role of Music in African Pentecostal Churches in Southwestern Nigeria."
-8. Sinach. "I Know Who I Am." Official music video, 2014. <https://www.youtube.com/watch?v=frtZ4XfoXxM>.
+1. Ajose, Toyin Samuel. "Liturgical traditions and transitions: Congregational hymn singing in Nigerian Pentecostal churches." *Journal of the Association of Nigerian Musicologists*, 2025.
+2. Ajose, Toyin Samuel. "'Me I no go suffer': Christian songs and prosperity gospel among Yoruba Pentecostals in Southwest Nigeria."
+3. Ayodeji, Oluwafemi Emmanuel. *Ecstasy, Holiness and Spiritual Warfare: Yorùbá Pentecostal Music Experience*. Durham University, 2019.
+4. Rotimi, Oti Alaba. "The Role of Music in African Pentecostal Churches in Southwestern Nigeria."
+5. Sinach. "I Know Who I Am." Official music video, 2014. <https://www.youtube.com/watch?v=frtZ4XfoXxM>.
 
 Entries are listed alphabetically by author, with the same numbering used on the bibliography slide, the Word document bibliography page, and the `#bibliography` section of the webpage. No page numbers are fabricated; where a specific publication venue was not verified, the entry names only the author and title.
