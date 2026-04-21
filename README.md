@@ -4,7 +4,7 @@ A cohesive presentation package on Sinach's *I Know Who I Am* for the Yale Divin
 
 **Central argument**
 
-> *I Know Who I Am* is not just a song about identity. It is a practical theological act that forms believers to live differently in the world. By teaching worshippers who they are before God, the song gives them confidence, dignity, and a sense of responsibility that can move belief into action.
+> *I Know Who I Am* does more than describe identity. It puts theology into practice. The song teaches worshippers who they are before God, and it gives them the confidence, dignity, and responsibility to carry that identity into daily life.
 
 ---
 
