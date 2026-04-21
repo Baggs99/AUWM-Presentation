@@ -549,17 +549,17 @@ img, svg { display: block; max-width: 100%; }
 
 /* ==============================================================
    LYRICS SHEET  /  Sing along block below the video
-   Designed for phones: large readable serif, generous line
-   height, stanzas separated by Cinzel-labeled section tags.
-   Sits on a dark panel with gold borders to match the video
-   frame treatment directly above it.
+   Collapsed by default behind a <details> disclosure so the
+   encounter section reads tight on first scroll. When opened,
+   stanzas are rendered in a mobile-first serif with Cinzel
+   section labels.
    ============================================================== */
 .lyrics-sheet {
   position: relative;
   z-index: 2;
   max-width: 880px;
   margin: 72px auto 0;
-  padding: 52px 44px 40px;
+  padding: 0;
   background:
     radial-gradient(600px 300px at 50% 0%, rgba(201, 163, 91, 0.08), transparent 60%),
     linear-gradient(180deg, rgba(20, 14, 9, 0.78), rgba(14, 11, 8, 0.88));
@@ -568,37 +568,80 @@ img, svg { display: block; max-width: 100%; }
     inset 0 0 0 8px rgba(244, 236, 216, 0.02),
     inset 0 0 0 9px rgba(201, 163, 91, 0.12),
     0 30px 70px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 
-.lyrics-header {
+/* Remove the default disclosure triangle across browsers. */
+.lyrics-sheet > summary { list-style: none; }
+.lyrics-sheet > summary::-webkit-details-marker { display: none; }
+
+.lyrics-summary {
+  position: relative;
   text-align: center;
-  margin-bottom: 40px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid rgba(201, 163, 91, 0.18);
+  padding: 36px 60px 32px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 220ms ease;
 }
-.lyrics-header .ornament { margin: 0 auto 18px; }
-.lyrics-header .eyebrow { margin-bottom: 10px; }
-.lyrics-title {
+.lyrics-summary:hover { background-color: rgba(201, 163, 91, 0.04); }
+.lyrics-summary:focus-visible {
+  outline: 2px solid rgba(201, 163, 91, 0.6);
+  outline-offset: -10px;
+}
+.lyrics-summary .ornament { margin: 0 auto 14px; }
+.lyrics-summary .eyebrow { margin-bottom: 8px; }
+
+.lyrics-summary-title {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: clamp(28px, 3.4vw, 44px);
+  font-size: clamp(26px, 3vw, 38px);
   color: var(--ivory);
   margin: 0 0 10px;
   letter-spacing: -0.01em;
   line-height: 1.1;
 }
-.lyrics-subtitle {
+.lyrics-summary-hint {
   font-family: var(--font-display);
   font-style: italic;
-  color: rgba(244, 236, 216, 0.65);
-  font-size: 15.5px;
+  color: rgba(244, 236, 216, 0.6);
+  font-size: 14.5px;
   margin: 0;
+  min-height: 1.4em;
 }
+.lyrics-summary-hint .hint-open { display: none; }
+.lyrics-sheet[open] .lyrics-summary-hint .hint-closed { display: none; }
+.lyrics-sheet[open] .lyrics-summary-hint .hint-open { display: inline; }
 
+/* Chevron  ::  rotates 180deg when the disclosure opens. */
+.lyrics-chevron {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  width: 14px;
+  height: 14px;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 260ms ease;
+  pointer-events: none;
+}
+.lyrics-chevron::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-right: 1.5px solid rgba(201, 163, 91, 0.75);
+  border-bottom: 1.5px solid rgba(201, 163, 91, 0.75);
+  transform: rotate(45deg);
+  transform-origin: 70% 70%;
+}
+.lyrics-sheet[open] .lyrics-chevron { transform: translateY(-50%) rotate(-180deg); }
+
+/* Body only shows when open; give it the framed padding the
+   whole sheet used to own, plus a divider line above. */
 .lyrics-body {
   display: flex;
   flex-direction: column;
   gap: 36px;
+  padding: 32px 44px 40px;
+  border-top: 1px solid rgba(201, 163, 91, 0.18);
 }
 
 .lyric-block { text-align: center; }
@@ -641,8 +684,8 @@ img, svg { display: block; max-width: 100%; }
 
 .lyrics-credit {
   text-align: center;
-  margin-top: 44px;
-  padding-top: 24px;
+  margin: 0;
+  padding: 20px 44px 28px;
   font-size: 10px;
   letter-spacing: 0.3em;
   color: rgba(201, 163, 91, 0.55);
@@ -650,9 +693,11 @@ img, svg { display: block; max-width: 100%; }
 }
 
 @media (max-width: 720px) {
-  .lyrics-sheet { padding: 36px 22px 30px; margin-top: 52px; }
-  .lyrics-header { margin-bottom: 30px; padding-bottom: 22px; }
-  .lyrics-body { gap: 28px; }
+  .lyrics-sheet { margin-top: 52px; }
+  .lyrics-summary { padding: 28px 44px 24px; }
+  .lyrics-chevron { right: 18px; width: 12px; height: 12px; }
+  .lyrics-body { gap: 28px; padding: 26px 22px 32px; }
+  .lyrics-credit { padding: 18px 22px 24px; }
   .lyric-label::before,
   .lyric-label::after { width: 18px; }
   .lyric-label { gap: 10px; font-size: 10.5px; letter-spacing: 0.28em; }
@@ -1370,4 +1415,6 @@ img, svg { display: block; max-width: 100%; }
   .hero-bg { animation: none; }
   .says-portrait:hover .says-portrait-bg,
   .sacred-image.has-image .sacred-image-frame:hover { transform: none; }
+  .lyrics-chevron,
+  .lyrics-summary { transition: none; }
 }

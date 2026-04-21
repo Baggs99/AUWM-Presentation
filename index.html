@@ -204,15 +204,19 @@
         <!-- ====================================================== -->
         <!-- SING ALONG  /  Full lyrics for phone readers            -->
         <!-- ====================================================== -->
-        <div class="lyrics-sheet" aria-label="Full lyrics, sing along">
-          <div class="lyrics-header">
+        <details class="lyrics-sheet">
+          <summary class="lyrics-summary" aria-label="Toggle full lyrics for sing along">
             <svg class="ornament ornament-gold" aria-hidden="true" width="120" height="20">
               <use href="#fleuron" />
             </svg>
             <p class="eyebrow cinzel gold">Sing along</p>
-            <h3 class="lyrics-title">Lyrics</h3>
-            <p class="lyrics-subtitle">Follow along on your phone and sing with the room.</p>
-          </div>
+            <p class="lyrics-summary-title">Lyrics</p>
+            <p class="lyrics-summary-hint">
+              <span class="hint-closed">Tap to open &middot; follow along on your phone</span>
+              <span class="hint-open">Tap to close</span>
+            </p>
+            <span class="lyrics-chevron" aria-hidden="true"></span>
+          </summary>
 
           <div class="lyrics-body">
             <section class="lyric-block">
@@ -350,7 +354,7 @@
           </div>
 
           <p class="lyrics-credit cinzel">Lyrics &copy; Sinach</p>
-        </div>
+        </details>
       </div>
     </section>
 
