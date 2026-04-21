@@ -1,0 +1,1261 @@
+/* =============================================================
+   I KNOW WHO I AM  ::  sacred worship experience
+   A practical theology of African urban worship music
+   Palette blends African earth tones with Catholic/liturgical
+   gold, candlelight, stained-glass washes, and manuscript framing.
+   ============================================================= */
+
+:root {
+  /* Core surfaces */
+  --charcoal: #0e0b08;
+  --shadow:   #17110c;
+  --espresso: #23180f;
+  --ivory:    #f4ecd8;
+  --parchment:#ebe0c4;
+  --stone:    #d8cdb4;
+
+  /* Earth and clay */
+  --terracotta: #9c4a26;
+  --clay:       #b56e3d;
+  --oxblood:    #5e1f22;
+  --wine:       #7a2a2e;
+
+  /* Gold and brass */
+  --gold:       #c9a35b;
+  --gold-soft:  #e1c188;
+  --brass:      #a87c3c;
+  --bronze:     #8a5a28;
+
+  /* Ink tones */
+  --ink:        #17110c;
+  --ink-soft:   #3a2e22;
+  --muted:      #6b5b48;
+  --muted-dark: #9c8d78;
+
+  /* Halos and washes */
+  --amber-wash: rgba(219, 167, 92, 0.35);
+  --glow:       rgba(255, 205, 130, 0.18);
+  --halo:       rgba(255, 213, 140, 0.22);
+  --line:       rgba(201, 163, 91, 0.22);
+  --line-soft:  rgba(23, 17, 12, 0.12);
+
+  --max:    1180px;
+  --narrow: 860px;
+  --radius: 4px;                      /* intentionally square/chiseled */
+  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.25);
+
+  --font-serif:   "Fraunces", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Fraunces", Georgia, serif;
+  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-cinzel:  "Cinzel", "Fraunces", Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--bronze);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+a:hover { color: var(--terracotta); border-color: var(--gold); }
+
+img, svg { display: block; max-width: 100%; }
+
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* =============================================================
+   Utilities
+   ============================================================= */
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 2;
+}
+.container.narrow { max-width: var(--narrow); }
+.container.center { text-align: center; }
+
+.cinzel {
+  font-family: var(--font-cinzel);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--bronze);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 0 22px;
+}
+.eyebrow.gold { color: var(--gold); }
+.eyebrow.center { text-align: center; }
+
+.ornament {
+  display: block;
+  margin: 0 auto 22px;
+  color: var(--bronze);
+  opacity: 0.85;
+}
+.ornament-gold { color: var(--gold); opacity: 0.95; }
+.ornament.center-block { margin: 0 auto 26px; }
+
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 28px;
+}
+.section-title.pale { color: var(--ivory); }
+
+.section-lede {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.5;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 720px;
+  margin: 0 0 48px;
+}
+.section-lede.pale { color: rgba(244, 236, 216, 0.78); }
+
+/* =============================================================
+   Header
+   ============================================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(14, 11, 8, 0.55);
+  backdrop-filter: saturate(1.3) blur(12px);
+  -webkit-backdrop-filter: saturate(1.3) blur(12px);
+  border-bottom: 1px solid rgba(201, 163, 91, 0.15);
+  color: var(--ivory);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-cinzel);
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  color: var(--ivory);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.brand-icon { width: 18px; height: 18px; color: var(--gold); }
+.brand-text { opacity: 0.9; }
+
+.site-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav a {
+  color: rgba(244, 236, 216, 0.65);
+  font-family: var(--font-cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: none;
+}
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--gold-soft);
+  border-bottom: none;
+}
+
+@media (max-width: 900px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 20px; }
+  .site-nav { gap: 12px; }
+  .site-nav a { font-size: 9.5px; letter-spacing: 0.18em; }
+}
+
+/* =============================================================
+   HERO  /  Invocation
+   ============================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 160px 24px 140px;
+  color: var(--ivory);
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--charcoal);
+}
+
+/* Layered stained-glass & candlelight wash over the hero photograph.
+   The photograph (images/hero.jpg) is the base layer; warm radial
+   washes and a dark linear gradient sit on top so text stays legible. */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    radial-gradient(800px 600px at 20% 30%, rgba(201, 163, 91, 0.28), transparent 60%),
+    radial-gradient(900px 700px at 80% 70%, rgba(122, 42, 46, 0.42), transparent 65%),
+    radial-gradient(1200px 800px at 50% 110%, rgba(180, 110, 61, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(8, 6, 4, 0.78) 0%, rgba(26, 17, 10, 0.55) 45%, rgba(11, 8, 4, 0.82) 100%),
+    url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05);
+  animation: heroZoom 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroZoom {
+  0%   { transform: scale(1);    }
+  100% { transform: scale(1.06); }
+}
+
+.hero-stainedglass {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(3px 3px at 14% 22%, rgba(255, 215, 140, 0.22), transparent 40%),
+    radial-gradient(2px 2px at 73% 41%, rgba(255, 200, 130, 0.18), transparent 40%),
+    radial-gradient(3px 3px at 38% 78%, rgba(230, 180, 100, 0.2), transparent 40%),
+    radial-gradient(2px 2px at 88% 85%, rgba(180, 90, 70, 0.18), transparent 40%);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.hero-dustmotes {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255, 230, 180, 0.35), transparent 2px),
+    radial-gradient(1px 1px at 30% 60%, rgba(255, 220, 160, 0.28), transparent 2px),
+    radial-gradient(1px 1px at 60% 35%, rgba(255, 230, 180, 0.3), transparent 2px),
+    radial-gradient(1px 1px at 80% 70%, rgba(255, 220, 160, 0.28), transparent 2px),
+    radial-gradient(1px 1px at 48% 85%, rgba(255, 230, 180, 0.35), transparent 2px);
+  opacity: 0.6;
+  animation: drift 28s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-12px, -18px, 0); }
+}
+
+/* Mandorla arch behind the title */
+.hero-arch {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.hero-arch svg {
+  width: min(560px, 78vw);
+  height: auto;
+  color: rgba(201, 163, 91, 0.35);
+  filter: drop-shadow(0 0 28px rgba(255, 210, 140, 0.18));
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-inner .eyebrow {
+  color: var(--gold);
+  margin-bottom: 28px;
+  font-size: 11px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: clamp(56px, 11vw, 148px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin: 6px 0 16px;
+  color: var(--ivory);
+  text-shadow:
+    0 0 60px rgba(255, 210, 140, 0.25),
+    0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(19px, 2.4vw, 26px);
+  font-weight: 400;
+  color: rgba(244, 236, 216, 0.85);
+  margin: 0 auto 56px;
+  max-width: 720px;
+  letter-spacing: 0.01em;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  max-width: 820px;
+  margin: 0 auto 56px;
+  padding: 0;
+  border-top: 1px solid rgba(201, 163, 91, 0.22);
+  border-bottom: 1px solid rgba(201, 163, 91, 0.22);
+}
+.hero-meta > div {
+  padding: 22px 18px;
+  border-right: 1px solid rgba(201, 163, 91, 0.15);
+  text-align: center;
+}
+.hero-meta > div:last-child { border-right: none; }
+.hero-meta dt {
+  font-family: var(--font-cinzel);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.hero-meta dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--ivory);
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-meta > div { border-right: none; border-bottom: 1px solid rgba(201, 163, 91, 0.12); }
+  .hero-meta > div:nth-last-child(-n+2) { border-bottom: none; }
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--gold-soft);
+  border: 1px solid rgba(201, 163, 91, 0.6);
+  border-radius: 0;
+  font-family: var(--font-cinzel);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.cta:hover {
+  background: rgba(201, 163, 91, 0.12);
+  color: var(--ivory);
+  border-color: var(--gold);
+  border-bottom-color: var(--gold);
+  transform: translateY(-2px);
+}
+.cta svg { opacity: 0.85; }
+
+.hero-kente {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8px;
+  z-index: 3;
+  opacity: 0.9;
+}
+
+/* =============================================================
+   Section base
+   ============================================================= */
+.section {
+  position: relative;
+  padding: 130px 0;
+  background: var(--ivory);
+  overflow: hidden;
+}
+.section.alt {
+  background: var(--parchment);
+}
+
+/* Subtle paper grain on light sections */
+.section:not(.practical-theology):not(.action):not(.it-does):not(.sources):not(.encounter):not(.benediction)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 22% 18%, rgba(23, 17, 12, 0.05), transparent 2px),
+    radial-gradient(1px 1px at 68% 52%, rgba(23, 17, 12, 0.04), transparent 2px),
+    radial-gradient(1px 1px at 44% 82%, rgba(23, 17, 12, 0.05), transparent 2px);
+  opacity: 0.6;
+}
+
+/* =============================================================
+   INVOCATION  /  Thesis
+   ============================================================= */
+.invocation { padding: 150px 0 140px; }
+.invocation .eyebrow { color: var(--bronze); }
+.invocation .ornament { color: var(--bronze); margin-bottom: 34px; }
+
+.illumination {
+  position: relative;
+  margin: 24px auto 34px;
+  padding: 28px 36px;
+  border-left: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+  max-width: 780px;
+}
+.illumination::before,
+.illumination::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.illumination::before { top: -1px; }
+.illumination::after  { bottom: -1px; }
+
+.illumination p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  text-align: left;
+}
+
+/* First letter drop-cap, illuminated-manuscript style */
+.illumination p::first-letter {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3.6em;
+  line-height: 0.9;
+  float: left;
+  padding: 6px 12px 0 0;
+  color: var(--terracotta);
+}
+
+/* =============================================================
+   ENCOUNTER  /  Video
+   Background uses images/encounter.jpg (dark worship concert
+   silhouette) with heavy black + amber overlay so the YouTube
+   embed stays unambiguously the focal point.
+   ============================================================= */
+.encounter {
+  position: relative;
+  color: var(--ivory);
+  padding: 130px 0 140px;
+  background: #0a0805;
+  overflow: hidden;
+}
+.encounter-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(900px 500px at 50% 30%, rgba(201, 163, 91, 0.2), transparent 60%),
+    radial-gradient(700px 500px at 80% 90%, rgba(122, 42, 46, 0.3), transparent 65%),
+    linear-gradient(180deg, rgba(10, 8, 5, 0.88) 0%, rgba(23, 17, 12, 0.82) 50%, rgba(10, 8, 5, 0.92) 100%),
+    url('images/encounter.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05);
+}
+.encounter .section-title { color: var(--ivory); }
+.encounter .section-lede {
+  color: rgba(244, 236, 216, 0.7);
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 20px auto 18px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(201, 163, 91, 0.35);
+  padding: 6px;
+  background: rgba(20, 14, 9, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.3),
+    0 30px 90px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(201, 163, 91, 0.12);
+}
+.video-frame::before,
+.video-frame::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border: 1px solid rgba(201, 163, 91, 0.15);
+}
+.video-frame::after {
+  inset: -14px;
+  border: 1px solid rgba(201, 163, 91, 0.08);
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border: 0;
+}
+
+.video-caption {
+  color: rgba(201, 163, 91, 0.8);
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-align: center;
+  margin-top: 28px;
+}
+
+/* =============================================================
+   CONTEXT
+   ============================================================= */
+.context-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 56px;
+  align-items: start;
+  margin-top: 20px;
+}
+@media (max-width: 860px) {
+  .context-layout { grid-template-columns: 1fr; gap: 36px; }
+}
+
+.sacred-image {
+  margin: 0;
+  position: relative;
+}
+.sacred-image-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background:
+    linear-gradient(160deg, rgba(14, 11, 8, 0.15) 0%, rgba(14, 11, 8, 0.0) 30%, rgba(14, 11, 8, 0.55) 100%),
+    url('images/context.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--line);
+  box-shadow:
+    inset 0 0 0 10px rgba(244, 236, 216, 0.05),
+    inset 0 0 0 11px rgba(201, 163, 91, 0.22),
+    var(--shadow-soft);
+  transition: transform 0.6s ease;
+}
+.sacred-image.has-image .sacred-image-frame:hover { transform: scale(1.015); }
+/* Placeholder label only shows when data-label attribute is present
+   (i.e. no real image supplied). With images/context.jpg now committed,
+   the default context figure omits the data-label. */
+.sacred-image-frame[data-label]::before {
+  content: attr(data-label);
+  position: absolute;
+  inset: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(244, 236, 216, 0.55);
+  border: 1px dashed rgba(244, 236, 216, 0.25);
+  padding: 24px;
+}
+.sacred-image figcaption {
+  margin-top: 14px;
+  font-family: var(--font-cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.context-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+@media (max-width: 640px) {
+  .context-cards { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: rgba(244, 236, 216, 0.75);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--bronze);
+  padding: 24px 22px 22px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  box-shadow: 0 1px 0 rgba(23, 17, 12, 0.04);
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-top-color: var(--gold);
+  background: rgba(244, 236, 216, 1);
+}
+.card h3 {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.005em;
+}
+.card p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+/* =============================================================
+   WHAT IT DOES  /  Music as formation  (dark, image-led)
+   ============================================================= */
+.it-does {
+  color: var(--ivory);
+  padding: 140px 0 150px;
+  background: #10090a;
+}
+.it-does-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 9, 10, 0.88) 0%, rgba(16, 9, 10, 0.95) 100%),
+    radial-gradient(800px 500px at 20% 10%, rgba(201, 163, 91, 0.22), transparent 60%),
+    radial-gradient(900px 600px at 90% 100%, rgba(122, 42, 46, 0.4), transparent 65%),
+    url('images/congregation.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: normal, normal, normal, multiply;
+  filter: saturate(1.1);
+}
+.it-does::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 18% 28%, rgba(255, 220, 160, 0.25), transparent 2px),
+    radial-gradient(1px 1px at 62% 72%, rgba(255, 220, 160, 0.2), transparent 2px);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.numbered {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  counter-reset: num;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.numbered li {
+  counter-increment: num;
+  position: relative;
+  padding: 28px 28px 28px 86px;
+  background: rgba(244, 236, 216, 0.96);
+  border: 1px solid var(--line);
+}
+.numbered li::before {
+  content: counter(num, decimal-leading-zero);
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  font-family: var(--font-serif);
+  font-size: 40px;
+  color: var(--terracotta);
+  font-weight: 700;
+  line-height: 1;
+}
+.numbered h3 {
+  font-family: var(--font-serif);
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: var(--ink);
+}
+.numbered p { margin: 0; color: var(--ink-soft); font-size: 16px; line-height: 1.65; }
+
+.numbered-dark li {
+  background: rgba(20, 14, 10, 0.72);
+  border: 1px solid rgba(201, 163, 91, 0.28);
+  backdrop-filter: blur(6px);
+}
+.numbered-dark li::before { color: var(--gold); }
+.numbered-dark h3 { color: var(--ivory); }
+.numbered-dark p { color: rgba(244, 236, 216, 0.78); }
+
+@media (max-width: 820px) {
+  .numbered { grid-template-columns: 1fr; }
+}
+
+/* =============================================================
+   WHAT IT SAYS  /  Illuminated manuscript
+   ============================================================= */
+.it-says { padding: 140px 0; }
+
+.says-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .says-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.says-left .section-title { font-size: clamp(28px, 3.2vw, 42px); margin-bottom: 18px; }
+.says-left > p { color: var(--muted); font-size: 17px; max-width: 520px; margin-bottom: 32px; }
+
+.says-right h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.4vw, 30px);
+  color: var(--ink);
+  margin: 6px 0 18px;
+  line-height: 1.25;
+}
+.says-right p { color: var(--muted); font-size: 16.5px; margin: 0 0 14px; }
+
+/* Portrait-backed pivot panel: a close-up prayer photograph behind
+   the pivot text, tinted dark at the top for legibility. */
+.says-portrait {
+  position: relative;
+  min-height: 440px;
+  padding: 44px 38px;
+  border: 1px solid rgba(201, 163, 91, 0.3);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: var(--shadow-soft);
+}
+.says-portrait-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(10, 8, 5, 0.82) 0%, rgba(14, 11, 8, 0.65) 45%, rgba(14, 11, 8, 0.45) 100%),
+    url('images/prayer.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: saturate(1.05);
+  transition: transform 0.8s ease;
+}
+.says-portrait:hover .says-portrait-bg { transform: scale(1.03); }
+.says-portrait-inner { position: relative; }
+.says-portrait h3 { color: var(--ivory); }
+.says-portrait p  { color: rgba(244, 236, 216, 0.82); font-size: 16.5px; }
+.says-portrait .eyebrow { color: var(--gold-soft); }
+
+/* Manuscript panel */
+.manuscript {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(14, 11, 8, 0.98), rgba(27, 19, 11, 0.98));
+  color: var(--ivory);
+  padding: 50px 46px;
+  margin: 10px 0 0;
+  border: 1px solid rgba(201, 163, 91, 0.32);
+  box-shadow:
+    inset 0 0 0 8px rgba(201, 163, 91, 0.06),
+    inset 0 0 0 9px rgba(201, 163, 91, 0.18),
+    0 24px 60px rgba(0, 0, 0, 0.2);
+}
+.manuscript-corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--gold);
+  opacity: 0.85;
+}
+.manuscript-corner-tl { top: 12px;    left: 12px;    border-right: none;  border-bottom: none; }
+.manuscript-corner-tr { top: 12px;    right: 12px;   border-left: none;   border-bottom: none; }
+.manuscript-corner-bl { bottom: 12px; left: 12px;    border-right: none;  border-top: none; }
+.manuscript-corner-br { bottom: 12px; right: 12px;   border-left: none;   border-top: none; }
+
+.manuscript-illumination {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.manuscript ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.manuscript ul li {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--ivory);
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+}
+.manuscript ul li::before { content: "\201C"; color: var(--gold); margin-right: 2px; opacity: 0.7; }
+.manuscript ul li::after  { content: "\201D"; color: var(--gold); margin-left: 2px;  opacity: 0.7; }
+
+/* =============================================================
+   PRACTICAL THEOLOGY  /  Sanctuary
+   ============================================================= */
+.practical-theology {
+  position: relative;
+  color: var(--ivory);
+  padding: 170px 0 180px;
+  background: radial-gradient(ellipse at center top, #1b1108 0%, #0a0604 70%, #050302 100%);
+  border-top: 1px solid rgba(201, 163, 91, 0.18);
+  border-bottom: 1px solid rgba(201, 163, 91, 0.18);
+  overflow: hidden;
+}
+
+.pt-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Base layer: cathedral interior with stained-glass light, heavily
+   darkened and desaturated so the halo and rays stay dominant. */
+.pt-sanctuary {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 3, 2, 0.88) 0%, rgba(10, 6, 4, 0.78) 40%, rgba(5, 3, 2, 0.94) 100%),
+    url('images/sanctuary.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: saturate(0.8) contrast(1.05);
+  opacity: 0.85;
+}
+.pt-halo {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center,
+    rgba(255, 220, 150, 0.22) 0%,
+    rgba(255, 200, 120, 0.12) 30%,
+    rgba(201, 163, 91, 0.05) 55%,
+    transparent 70%);
+  filter: blur(2px);
+}
+.pt-rays {
+  position: absolute;
+  inset: 0;
+  background:
+    conic-gradient(from 0deg at 50% 22%,
+      transparent 0deg, rgba(255, 210, 140, 0.06) 6deg, transparent 12deg,
+      transparent 30deg, rgba(255, 210, 140, 0.06) 36deg, transparent 42deg,
+      transparent 60deg, rgba(255, 210, 140, 0.06) 66deg, transparent 72deg,
+      transparent 90deg, rgba(255, 210, 140, 0.06) 96deg, transparent 102deg,
+      transparent 120deg, rgba(255, 210, 140, 0.06) 126deg, transparent 132deg,
+      transparent 150deg, rgba(255, 210, 140, 0.06) 156deg, transparent 162deg,
+      transparent 360deg);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+.pt-inner { position: relative; z-index: 2; text-align: center; }
+
+.pt-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.05;
+  color: var(--ivory);
+  margin: 0 auto 22px;
+  max-width: 920px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 40px rgba(255, 210, 140, 0.18);
+}
+.pt-lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  color: rgba(244, 236, 216, 0.75);
+  max-width: 780px;
+  margin: 0 auto 72px;
+  line-height: 1.5;
+}
+
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  text-align: left;
+  margin-top: 10px;
+  padding: 0 8px;
+}
+
+.pt-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(35, 24, 15, 0.92), rgba(23, 16, 11, 0.94));
+  border: 1px solid rgba(201, 163, 91, 0.22);
+  padding: 70px 30px 34px;
+  text-align: center;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+.pt-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(201, 163, 91, 0.14), transparent 40%);
+}
+.pt-card::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+/* Romanesque arch cap */
+.pt-arch {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 40px;
+  border: 1px solid var(--gold);
+  border-bottom: none;
+  border-top-left-radius: 80px 40px;
+  border-top-right-radius: 80px 40px;
+  background: radial-gradient(circle at 50% 100%, rgba(255, 210, 140, 0.15), transparent 70%);
+}
+.pt-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 163, 91, 0.6);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 210, 140, 0.08);
+}
+.pt-card-center {
+  background: linear-gradient(180deg, rgba(40, 28, 17, 0.95), rgba(23, 16, 11, 0.96));
+  border-color: rgba(201, 163, 91, 0.45);
+  transform: translateY(-10px);
+}
+.pt-card-center:hover { transform: translateY(-14px); }
+
+.pt-numeral {
+  font-family: var(--font-cinzel);
+  font-size: 28px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 18px;
+  line-height: 1;
+}
+
+.pt-card h3 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ivory);
+  margin: 0 0 14px;
+  letter-spacing: -0.005em;
+}
+
+.pt-card p {
+  margin: 0;
+  color: rgba(244, 236, 216, 0.78);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.pt-footnote {
+  margin: 64px auto 0;
+  font-family: var(--font-cinzel);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+  .pt-grid { grid-template-columns: 1fr; }
+  .pt-card-center { transform: none; }
+  .pt-card-center:hover { transform: translateY(-6px); }
+}
+
+/* =============================================================
+   BELIEF IN ACTION  /  From sanctuary to street
+   ============================================================= */
+.action {
+  position: relative;
+  color: var(--ink);
+  padding: 150px 0 160px;
+  overflow: hidden;
+  background: var(--parchment);
+}
+.action-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 5, 3, 0.55) 0%, rgba(14, 11, 8, 0.3) 35%, rgba(244, 236, 216, 0.2) 65%, rgba(244, 236, 216, 0.88) 100%),
+    radial-gradient(900px 500px at 20% 10%, rgba(201, 163, 91, 0.28), transparent 60%),
+    radial-gradient(900px 600px at 80% 90%, rgba(180, 110, 61, 0.28), transparent 65%),
+    url('images/procession.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05);
+}
+.action .container { position: relative; z-index: 2; }
+
+.action .eyebrow { color: var(--gold); }
+.action .section-title { color: var(--ivory); text-shadow: 0 2px 40px rgba(0, 0, 0, 0.55); }
+.action .section-title { max-width: 820px; }
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 40px;
+}
+@media (max-width: 820px) {
+  .action-grid { grid-template-columns: 1fr; }
+}
+
+.action-pull {
+  position: relative;
+  padding: 32px 30px 28px;
+  background: rgba(244, 236, 216, 0.96);
+  border: 1px solid rgba(201, 163, 91, 0.3);
+  border-top: 3px solid var(--terracotta);
+  box-shadow: 0 18px 40px rgba(14, 11, 8, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.action-pull:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 56px rgba(14, 11, 8, 0.22);
+}
+.action-pull svg {
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.action-pull h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--ink);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.action-pull p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+/* =============================================================
+   BENEDICTION
+   A single moment of candlelight in the dark before the sources
+   page. Warm, slow, and close. The candle photograph (candle.jpg)
+   sits beneath a heavy black gradient so the text glows.
+   ============================================================= */
+.benediction {
+  position: relative;
+  padding: 150px 0 160px;
+  text-align: center;
+  color: var(--ivory);
+  background: #0a0604;
+  overflow: hidden;
+}
+.benediction-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(700px 420px at 50% 35%, rgba(255, 200, 120, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(10, 6, 4, 0.82) 0%, rgba(14, 11, 8, 0.72) 45%, rgba(10, 6, 4, 0.92) 100%),
+    url('images/candle.jpg');
+  background-size: cover;
+  background-position: center 50%;
+  filter: saturate(1.1);
+}
+.benediction .container { position: relative; z-index: 2; }
+.benediction .eyebrow { color: var(--gold); }
+.benediction .ornament { margin-bottom: 36px; color: var(--gold); opacity: 0.9; }
+.benediction-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.45;
+  color: var(--ivory);
+  max-width: 820px;
+  margin: 0 auto 36px;
+  text-shadow: 0 0 40px rgba(255, 200, 120, 0.18);
+}
+.benediction-sign {
+  color: var(--gold-soft);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  margin-top: 18px;
+}
+
+/* =============================================================
+   SOURCES  /  Archival panel
+   ============================================================= */
+.sources {
+  background:
+    radial-gradient(800px 400px at 80% 10%, rgba(122, 42, 46, 0.25), transparent 60%),
+    radial-gradient(600px 400px at 10% 90%, rgba(201, 163, 91, 0.15), transparent 60%),
+    linear-gradient(180deg, #0b0706 0%, #140b08 50%, #0b0706 100%);
+  color: var(--ivory);
+  padding: 130px 0 150px;
+}
+.sources .eyebrow { color: var(--gold); }
+.sources .section-title.pale { color: var(--ivory); margin-bottom: 40px; }
+
+.bib {
+  counter-reset: bib;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  max-width: 900px;
+  display: grid;
+  gap: 14px;
+}
+.bib li {
+  counter-increment: bib;
+  position: relative;
+  padding: 16px 20px 16px 64px;
+  border-left: 1px solid rgba(201, 163, 91, 0.25);
+  background: rgba(244, 236, 216, 0.04);
+  color: rgba(244, 236, 216, 0.85);
+  font-size: 15px;
+  line-height: 1.7;
+  font-family: var(--font-serif);
+}
+.bib li::before {
+  content: counter(bib, upper-roman);
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  font-family: var(--font-cinzel);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 500;
+}
+.bib li em { color: var(--gold-soft); font-style: italic; }
+.bib li a { color: var(--gold-soft); border-bottom: 1px solid rgba(201, 163, 91, 0.35); }
+.bib li a:hover { color: var(--ivory); border-color: var(--gold); }
+
+/* =============================================================
+   Footer
+   ============================================================= */
+.site-footer {
+  position: relative;
+  background: var(--charcoal);
+  color: rgba(244, 236, 216, 0.65);
+  padding: 36px 0 32px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-inner p {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  color: rgba(244, 236, 216, 0.6);
+}
+.back-to-top {
+  font-family: var(--font-cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  color: var(--gold-soft);
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(201, 163, 91, 0.4);
+}
+.back-to-top:hover { color: var(--ivory); border-color: var(--gold); }
+
+.footer-kente {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 6px;
+  opacity: 0.9;
+}
+
+/* =============================================================
+   Reveal on scroll
+   ============================================================= */
+.section { opacity: 0; transform: translateY(22px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.section.in-view { opacity: 1; transform: none; }
+.hero { opacity: 1; transform: none; }
+
+/* Staggered inner reveals (optional, used by script.js) */
+.fade-up { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; transition-delay: var(--d, 0ms); }
+.fade-up.in-view { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .section, .fade-up { opacity: 1; transform: none; transition: none; }
+  .hero-dustmotes,
+  .hero-bg { animation: none; }
+  .says-portrait:hover .says-portrait-bg,
+  .sacred-image.has-image .sacred-image-frame:hover { transform: none; }
+}

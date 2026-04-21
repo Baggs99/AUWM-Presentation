@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Build / safe-write fallbacks from generate_assets.py
+*.new.pptx
+*.new.docx
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# Office lock files (created while Word/PowerPoint have a doc open)
+~$*.docx
+~$*.pptx
